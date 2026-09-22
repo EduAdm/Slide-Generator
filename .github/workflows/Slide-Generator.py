@@ -1,7 +1,7 @@
 name: Generate PowerPoint Deck
 
 on:
-  workflow_dispatch: # Allows manual trigger from GitHub interface
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
     - name: Install dependencies
       run: |
@@ -22,7 +22,8 @@ jobs:
         pip install python-pptx
 
     - name: Generate PowerPoint File
-      run: python generate_deck.py
+      run: |
+        python Slide-Generator.py
 
     - name: Upload Presentation Artifact
       uses: actions/upload-artifact@v4
